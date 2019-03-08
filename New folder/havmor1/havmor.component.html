@@ -1,0 +1,125 @@
+
+
+    <div class="container-fluid animated fadeIn pt-1">
+      
+      <i class="fa fa-navicon pl-1 pt-1 gregreyText" style="float: left;"
+        (click)="toggleSideNav()"></i>
+
+      <div class="float-right">
+        <mat-button-toggle-group #group="matButtonToggleGroup" value="All" name="fontStyle" aria-label="Font Style">
+          <input matInput placeholder="Search here" type="text"
+            [(ngModel)]="searchVal" (keyup)="updateFilter()">
+          <i class="fa fa-caret-down"></i>
+          <mat-button-toggle *ngFor="let item of department"
+            (click)="toggleButton(item.name)"
+            value={{item.name}}><i class={{item.icon}}></i>&nbsp;{{item.name}}</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="mt-5">
+        <hr>
+
+        <div class="cardView">
+
+        <!-- <div class="card testimonial-card" style="max-width: 22rem;">
+                <div class="card-up aqua-gradient">
+                    <h4 class="card-title">Martha Smith</h4>
+                </div>
+                <div class="card-body">
+                    <hr>
+                    <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p>
+                </div>
+        </div>   -->
+          
+        <div class="col-md-6">
+        <div class="card testimonial-card mbottom" *ngIf="department[0].show">     
+              <div class="card-up aqua-gradient">
+                  <span class="card-title">Asset</span>
+              </div>
+              <div class="card-body">
+                <div class="row card-text">
+                 <span class="col-md-6"><b>ASSETNO :</b> {{this.source[0].ASSETNO}}</span>
+                 <span class="col-md-6"><b>EQUIPMENTN0 :</b> {{this.source[0].EQUIPMENTN0}}</span>
+                 <span class="col-md-6"><b>BARCODENO :</b> {{this.source[0].BARCODENO}}</span>
+                 <span class="col-md-6"><b>ASSET_CAPACITY :</b> {{this.source[0].ASSET_CAPACITY}}</span>
+                 <span class="col-md-6"><b>ASSET_TYPE :</b> {{this.source[0].ASSET_TYPE}}&nbsp;<br></span>
+                 <span class="col-12"><b>ASSET_DESCRIPTION :</b> {{this.source[0].ASSET_DESCRIPTION}}</span>
+                 <span class="col-12"><b>ATOS_GENERATED_NO :</b> {{this.source[0]. ATOS_GENERATED_NO}}</span>
+                 <span class="col-12"><b>VENDOR_MANUFACTURING_SERIALNO :</b> {{this.source[0].VENDOR_MANUFACTURING_SERIALNO}}</span>
+                </div>           
+            </div>
+          </div>
+        </div>  
+
+        <div class="col-md-6">
+        <div class="card testimonial-card mbottom" *ngIf="department[1].show">
+            <div class="card-up aqua-gradient">
+                <span class="card-title">Finance</span>
+            </div>
+            <div class="card-body">
+                <div class="row card-text">
+                  <span class="col-md-6"><b>PLANT :</b> {{this.source[0].PLANT}}</span>
+                  <span class="col-md-6"><b>COSTCENTER :</b> {{this.source[0].COSTCENTER}}</span>
+                  <span class="col-md-6"><b>ASSET_CAP_DATE :</b> {{this.source[0].ASSET_CAP_DATE}}</span>
+                  <span class="col-md-6"><b>ASSET_VALUE :</b> {{this.source[0].ASSET_VALUE}}</span>
+                  <span class="col-md-6"><b>AMOUNT_PAID_DATE :</b> {{this.source[0].AMOUNT_PAID_DATE}}</span>
+                  <span class="col-md-6"><b>CHEQUENO :</b> {{this.source[0].CHEQUENO}}</span>
+                  <span class="col-md-6"><b>REFUND_AMOUNT_PAID :</b> {{this.source[0].REFUND_AMOUNT_PAID}}</span>
+                  <span class="col-md-6"><b>REFUND_AMOUNT_PAID_DATE :</b> {{this.source[0].REFUND_AMOUNT_PAID_DATE}}</span>
+                  <span class="col-md-6"><b>REMARKS :</b> {{this.source[0].REMARKS}}</span>
+                  <span class="col-12"><b>TBASE_DEPOSIT_AMOUNT :</b> {{this.source[0].TBASE_DEPOSIT_AMOUNT}}</span> 
+                  <span class="col-12"><b>SERVICE_CHARGE_AMOUNT :</b> {{this.source[0].SERVICE_CHARGE_AMOUNT}}</span>
+                  <span class="col-12"><b>SERVICE_CHARGE_DUE_DATE :</b> {{this.source[0].SERVICE_CHARGE_DUE_DATE}}&nbsp;</span>
+                  <span class="col-12"><b>SERVICE_CHARGE_AMOUNT_PAID_DATE :</b> {{this.source[0].SERVICE_CHARGE_AMOUNT_PAID_DATE}}</span>
+                </div> 
+              </div>
+          </div>
+        </div>
+
+        <div *ngIf="department[2].show" class="card mbottom col-md-6">
+            <mdb-card-body>
+              <mdb-card-title><h6>Reseller</h6> </mdb-card-title>
+              <mdb-card-text> 
+                  RESELLER_CODE : {{this.source[0].RESELLER_CODE}}&nbsp; 
+                  RESELLER_NAME : {{this.source[0].RESELLER_NAME}}&nbsp; 
+                  RESELLER_ADDRESS : {{this.source[0].RESELLER_ADDRESS}}&nbsp;  
+                  AREA : {{this.source[0].AREA}}&nbsp; 
+                  STATE : {{this.source[0].STATE}}&nbsp; 
+                  PINCODE : {{this.source[0].PINCODE}}&nbsp;  
+                  CONTACT_PERSON : {{this.source[0].CONTACT_PERSON}}&nbsp;  
+                  TELNO : {{this.source[0].TELNO}}&nbsp;  
+                  SALES_DISTRICT : {{this.source[0].SALES_DISTRICT}}&nbsp; 
+                  DIST_STORAGE_LOCATION : {{this.source[0].DIST_STORAGE_LOCATION}}&nbsp;  
+                  CATEGORY : {{this.source[0].CATEGORY}}&nbsp; 
+              </mdb-card-text>       
+            </mdb-card-body>
+          </div>
+
+        <div *ngIf="department[3].show" class="card mbottom col-md-6">
+            <mdb-card-body>
+              <mdb-card-title><h6>OEM</h6> </mdb-card-title>
+              <mdb-card-text> VENDOR_NAME: {{this.source[0].VENDOR_NAME}}&nbsp; </mdb-card-text>
+            </mdb-card-body>
+          </div>
+
+        <div *ngIf="department[4].show" class="card mbottom col-md-6">
+            <mdb-card-body>
+              <mdb-card-title><h6>Purchase</h6> </mdb-card-title>
+              <mdb-card-text> 
+                  GRN_NO : {{this.source[0].GRN_NO}}&nbsp; 
+                  GRN_DATE : {{this.source[0].GRN_DATE}}&nbsp; 
+                  MATERIAL_CODE : {{this.source[0].MATERIAL_CODE}}&nbsp; 
+                  PURCHASE_ORDER_NO : {{this.source[0].PURCHASE_ORDER_NO}}&nbsp; 
+                  SALES_ORDER_NO : {{this.source[0].SALES_ORDER_NO}}&nbsp; 
+                  ORDER_TYPE : {{this.source[0].ORDER_TYPE}}&nbsp; 
+                  ORDER_DATE : {{this.source[0].ORDER_DATE}}&nbsp; 
+                  DELIVERY_DATE : {{this.source[0].DELIVERY_DATE}}&nbsp; 
+                  VENDOR_BILL_NO : {{this.source[0].VENDOR_BILL_NO}}&nbsp; 
+              </mdb-card-text>
+              <a href="#" class="btn btn-primary waves-light" mdbWavesEffect>More</a>
+            </mdb-card-body>
+          </div>
+        </div>  
+      </div>
+    </div>
+

@@ -1,0 +1,125 @@
+<div class="container-fluid animated fadeIn mt-2">
+  <div class="row">
+    <div class="col-10">
+      <mat-form-field style="width: 100%; padding: 0px 5px 10px 5px;">
+        <input matInput type="text" [(ngModel)]="assetno" placeholder="Search"
+          autocomplete="off" autofocus="true">
+      </mat-form-field>
+    </div>
+    <div class="col-2"><button mdbBtn type="button" mdbWavesEffect class="btn
+        btn-sm waves-light pri">
+        <i class="fa fa-search" style="margin-right: 5px"></i>Search
+      </button></div>
+  </div>
+
+  <ngx-datatable #table class="material" [rows]="rows" [columns]="columns"
+    [columnMode]="'force'" [headerHeight]="50"
+    [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="'true'"
+    [scrollbarH]="true" [loadingIndicator]="loadingIndicator"
+    [rowClass]="rowClass">
+     [limit]="10"
+    <ngx-datatable-column name="No" prop="SrNo" [width]="20"></ngx-datatable-column>
+    <ngx-datatable-column name="Particular" prop="Particular" [width]="200"></ngx-datatable-column>
+    <ngx-datatable-column name="Gatepass" prop="Gatepass" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Gatepass Date" prop="GatepassDate"
+      [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Device & Problem" prop="Device_Problem"
+      [width]="800">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"
+        let-value="value" let-row="row">
+        <span (click)="test.toggle()">{{value.length}} Devices</span>
+        <div class="" [mdbCollapse]="isCollapsed" #test="bs-collapse">
+          <table class="table table-bordered">
+            <thead>
+              <th>Device</th>
+              <th>Problem</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of value">
+                <td>{{item.Device}}</td>
+                <td>{{item.Problem}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Service Center" prop="ServiceCenter"
+      [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Problem" prop="Problem" [width]="200"></ngx-datatable-column>
+    <ngx-datatable-column name="Serial No" prop="SerialNo" [width]="150"></ngx-datatable-column>
+    <ngx-datatable-column name="RMA No" prop="RMANo" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="DC No" prop="DCNo" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Received Date"
+      prop="ReceivedFromServiceCenterDate" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Returned Date" prop="ReturnedToPartyDate"
+      [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Courier Date" prop="CourierDate" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column name="Status" prop="Status" [width]="100"></ngx-datatable-column>
+  </ngx-datatable>
+  
+
+
+  <!-- <div class="col-10 p-2" #asset *ngFor="let item of rows;">
+    <div class="card mr-2 p-3">
+      <div class="gradient">
+        <span class="my-card-title float-left headerColor">{{item.Status}}</span>
+      </div>
+     
+        <div class="row">
+          <div class="col label-1">SrNo:</div>
+          <div class="col"><b>
+            <input matInput type="text"
+            value="{{item.SrNo}}">
+          </b></div>
+          <div class="col label-1">Particular </div>
+          <div class="col"><b>
+            <input matInput type="text"
+            value="{{item.Particular}}">
+          </b></div>
+        </div>
+        
+        <div class="row">
+          <div class="col label-1">Gatepass: </div>
+          <div class="col"><b>
+              <input matInput type="text"
+              value="{{item.Gatepass}}">
+            </b></div>
+          <div class="col label-1">GatepassDate: </div>
+          <div class="col"><b>
+            <input matInput type="text"
+            value="{{item.GatepassDate}}">
+          </b></div>    
+        </div>
+
+        <div class="row ml-1">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Device_Problem
+                </mat-panel-title>
+                <mat-panel-description>
+                  Device List
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <div *ngFor="let device of item.Device_Problem;">
+                <input matInput type="text"
+                value="{{device.Device}}">
+              </div>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+    </div>
+</div>   -->
+
+
+
+
+
+</div>
+

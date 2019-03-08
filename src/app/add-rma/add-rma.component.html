@@ -1,0 +1,103 @@
+  <div class="col-11">
+
+    <form class="formStyling" [formGroup]="createRMA" (ngSubmit)="saveRMA()">       
+            <div class="row form-style-1">
+              <div class="col">
+                  <label>Particular<span class="required">*</span></label>
+                  <input formControlName="Particular" type="text" name="Particular" placeholder="Particular" />&nbsp;
+              </div>
+              <div class="col">
+                  <label>Gatepass<span class="required">*</span></label>
+                  <input formControlName="Gatepass" type="text" name="Gatepass" placeholder="Gatepass" />&nbsp;
+              </div>
+              <div class="col">
+                  <label>GatepassDate<span class="required">*</span></label>
+                 <div style="display: flex;height: 36px;" class="custom"> 
+                  <input readonly matInput [matDatepicker]="picker" placeholder="GatepassDate" 
+                  name="GatepassDate" formControlName="GatepassDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker></mat-datepicker>
+                </div>
+              </div>
+            </div>
+
+           
+            <div style="border: 1px solid slategray;padding: 10px 0px 0px 10px">
+                <div class="row form-style-1 text-center">
+                    <span class="col deviceProblem">Device Problems</span>
+                    <span class="badge badge-default mr-5">{{createRMA.get('DeviceProblem').length}}</span>
+                  </div>
+
+                  <div [formGroup]="DeviceProb">
+                    <div class="row form-style-1 pt-4">
+                        <div class="col">
+                            <label>Device<span class="required">*</span></label>
+                            <input formControlName="Device" type="text" name="Device" placeholder="Device" />&nbsp;
+                        </div>
+                        <div class="col">
+                            <label>Problem<span class="required">*</span></label>
+                            <input formControlName="Problem" type="text" name="Problem" placeholder="Problem" />&nbsp;
+                        </div>
+                      </div>
+                      <div class="row form-style-1">
+                        <div class="col">
+                            <label>SerialNo<span class="required">*</span></label>
+                            <input formControlName="SerialNo" type="text" name="SerialNo" placeholder="SerialNo" />&nbsp;
+                        </div>
+                        <div class="col">
+                            <label>RMANo<span class="required">*</span></label>
+                            <input formControlName="RMANo" type="text" name="RMANo" placeholder="RMANo" />&nbsp;
+                        </div>
+                      </div>
+                      <div class="row form-style-1">
+                        <div class="col">
+                            <label>DCNo<span class="required">*</span></label>
+                            <input formControlName="DCNo" type="text" name="DCNo" placeholder="DCNo" />&nbsp;
+                        </div>
+                        <div class="col">
+                            <label>SendToServiceCenterDate<span class="required">*</span></label>
+                            <div style="display: flex;height: 36px;" class="custom"> 
+                                <input readonly matInput [matDatepicker]="sendtoservice" 
+                                formControlName="SendToServiceCenterDate"
+                                placeholder="SendToServiceCenterDate" name="SendToServiceCenterDate">
+                                <mat-datepicker-toggle matSuffix [for]="sendtoservice"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #sendtoservice></mat-datepicker>
+                           </div>
+                        </div>
+                      </div>
+                      <div class="row form-style-1">
+                          <div class="col">
+                              <label>ReceivedFromServiceCenterDate<span class="required">*</span></label>
+                              <div style="display: flex;height: 36px;" class="custom"> 
+                                  <input readonly matInput [matDatepicker]="recievefromservice"
+                                  formControlName="ReceivedFromServiceCenterDate" 
+                                  placeholder="ReceivedFromServiceCenterDate" name="ReceivedFromServiceCenterDate">
+                                  <mat-datepicker-toggle matSuffix [for]="recievefromservice"></mat-datepicker-toggle>
+                                  <mat-datepicker touchUi #recievefromservice></mat-datepicker>
+                              </div>
+                          </div>
+                        <div class="col">
+                              <label>ReturnedToPartyDate<span class="required">*</span></label>
+                              <div style="display: flex;height: 36px;" class="custom"> 
+                                  <input readonly matInput [matDatepicker]="returntoparty" 
+                                  formControlName="ReturnedToPartyDate" 
+                                  placeholder="ReturnedToPartyDate" name="ReturnedToPartyDate">
+                                  <mat-datepicker-toggle matSuffix [for]="returntoparty"></mat-datepicker-toggle>
+                                  <mat-datepicker touchUi #returntoparty></mat-datepicker>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row form-style-1 p-2" style="justify-content: flex-end;">
+                      <button type="button" class="btn btn-sm btn-primary" (click)="add()">Add</button>
+                     </div>
+                  </div>
+
+
+            </div>
+            <div class="row form-style-1 p-2" style="justify-content: center;">
+                <button class="btn btn-sm btn-primary" type="submit" [disabled]="!createRMA.valid">Save RMA</button>
+            </div>
+            
+         </form> 
+
+</div> 

@@ -1,0 +1,317 @@
+<mat-drawer-container style="background-color: white; height: 100vmax;">
+  <mat-drawer [opened]="sideNavOpened" mode="side" position="end" style="min-width: 350px">
+    <mat-form-field style="width: 100%; padding: 0px 5px 10px 5px">
+      <input matInput type="text" [(ngModel)]="searchQuery"
+        placeholder="Search" (keyup)="handleKeyUp($event)"
+        autocomplete="off" autofocus>
+    </mat-form-field>
+
+    <ul #list style="overflow-y:scroll; height: 500px;">
+      <li *ngFor="let item of source; let i= index" [class.active]="i ===
+        selectedIndex">
+        {{item.ASSETNO}} {{item.ASSET_DESCRIPTION}}
+      </li>
+    </ul>
+
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <div class="container justify-content-between animated fadeIn">
+      <div style="display: flex; flex-direction: row; flex-wrap: wrap;
+        justify-content: space-between">
+        <div>
+          <button mdbBtn type="button" color="blue-grey" mdbWavesEffect
+            class="btn
+            btn-sm waves-light" (click)="toggleSideNav()">
+            <i class="fa fa-search gregreyText" style="margin-right: 5px"></i>Search
+          </button>
+        </div>
+
+        <div>
+          <mat-button-toggle-group name="viewSelector"
+            #viewSelector="matButtonToggleGroup"
+            aria-label="Font Style" value="All">
+            <input matInput placeholder="Search here" type="text"
+              [(ngModel)]="searchVal" (keyup)="handleKeyUp($event)">
+            <i class="fa fa-caret-down"></i>
+            <mat-button-toggle *ngFor="let item of department"
+              value={{item.name}}><i
+                class={{item.icon}}></i>&nbsp;{{item.name}}</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <hr>
+      <!-- style="display: flex; flex-direction: row; flex-wrap: wrap;justify-content: flex-start;" -->
+      
+      
+      <!-- <div #panel style="overflow-y:scroll; height: 20px;" >
+          <div *ngFor="let log of arr; let i = index" innerHTML="{{log}}" [id]="i"></div>
+        </div>
+        <button (click)="onPreviousSearchPosition()">Previous</button>
+        <button (click)="onNextSearchPosition()">Next</button> -->
+      
+      <div>
+
+
+        <div class="row mr-2 ml-2">
+
+          <div class="col card mr-2" *ngIf="(viewSelector.value === 'Asset' ||
+            viewSelector.value === 'All')">
+            <span class="my-card-title float-left">Asset</span><div>
+
+              <div class="row">
+                <div class="col label-1">Asset No:</div>
+                <div class="col"><b>{{selected.ASSETNO}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Barcode No: </div>
+                <div class="col"><b>{{selected.BARCODENO}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">EquipmentNo: </div>
+                <div class="col"><b>{{selected.EQUIPMENTNO}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Capacity: </div>
+                <div class="col"><b>{{selected.ASSET_CAPACITY}}</b></div>
+              </div>
+
+              <div class="row">
+                <div class="col label-1">Type: </div>
+                <div class="col"><b>{{selected.ASSET_TYPE}}</b></div>
+                <!-- </div>
+                <div class="row"> -->
+                <div class="col label-1">Condition: </div>
+                <div class="col"><b>{{selected.ASSET_CONDITION}}</b></div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col label-1">Vendor Mfg Sr No: </div>
+                <div class="col"><b>{{selected.VENDOR_MANUFACTURING_SERIALNO}}</b></div>
+              </div>
+
+              <div class="row">
+                <div class="col label-1">ATOS Generated No:</div>
+                <div class="col"><b>{{selected.ATOS_GENERATED_NO}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Description:&nbsp;</div>
+                <div class="col"><b>{{selected.ASSET_DESCRIPTION}}</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col card" *ngIf="(viewSelector.value === 'Purchase' ||
+            viewSelector.value === 'All')">
+            <span class="my-card-title float-left">
+              Purchase
+            </span>
+            <div>
+              <div class="row">
+                <div class="col label-1">Material Code: </div><div
+                  class="col"><b>{{selected.MATERIAL_CODE}}</b></div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col label-1">GRN No: </div>
+                <div class="col"><b>{{selected.GRN_NO}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">GRN Date: </div>
+                <div class="col"><b>{{selected.GRN_DATE}}</b></div>
+              </div>
+
+              <div class="row">
+                <div class="col label-1">PO No: </div><div
+                  class="col"><b>{{selected.PURCHASE_ORDER_NO}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">SO No: </div>
+                <div class="col"><b>{{selected.SALES_ORDER_NO}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Order Type: </div>
+                <div class="col"><b>{{selected.ORDER_TYPE}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Order Date: </div>
+                <div class="col"><b>{{selected.ORDER_DATE}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Vendor Bill No: </div>
+                <div class="col"><b>{{selected.VENDOR_BILL_NO}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Delivery Date: </div>
+                <div class="col"><b>{{selected.DELIVERY_DATE}}</b></div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mr-2 ml-2">
+
+          <div class="col card mr-2" *ngIf="(viewSelector.value === 'Reseller'
+            || viewSelector.value === 'All')">
+            <span class="my-card-title float-left">
+              Reseller
+            </span>
+            <div>
+
+              <div class="row">
+                <div class="col label-1">Reseller Code: </div>
+                <div class="col"><b>{{selected.RESELLER_CODE}}</b></div></div>
+              <div class="row">
+                <div class="col label-1">Reseller: </div>
+                <div class="col"><b>{{selected.RESELLER_NAME}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Address: </div>
+                <div class="col"><b>{{selected.RESELLER_ADDRESS}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Area: </div>
+                <div class="col"><b>{{selected.AREA}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">State: </div>
+                <div class="col"><b>{{selected.STATE}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Pincode: </div>
+                <div class="col"><b>{{selected.PINCODE}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Contact Person: </div>
+                <div class="col"><b>{{selected.CONTACT_PERSON}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Contact: </div>
+                <div class="col"><b>{{selected.TELNO}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Sales District: </div>
+                <div class="col"><b>{{selected.SALES_DISTRICT}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Distributor Storage Location: </div>
+                <div class="col"><b>{{selected.DIST_STORAGE_LOCATION}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Category: </div>
+                <div class="col"><b>{{selected.CATEGORY}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Service Charge Amount Paid Date: </div>
+                <div class="col"><b>{{selected.SERVICE_CHARGE_AMOUNT}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Service Charge Due Date:</div>
+                <div class="col"><b>{{selected.SERVICE_CHARGE_DUE_DATE}}</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col card" *ngIf="(viewSelector.value === 'Finance' ||
+            viewSelector.value === 'All')">
+            <span class="my-card-title float-left">
+              Finance
+            </span>
+            <div>
+
+              <div class="row">
+                <div class="col label-1">Plant: </div>
+                <div class="col"><b>{{selected.PLANT}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Cost Center: </div>
+                <div class="col"><b>{{selected.COSTCENTER}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Cap Date: </div>
+                <div class="col"><b>{{selected.ASSET_CAP_DATE}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Asset Value: </div>
+                <div class="col"><b>{{selected.ASSET_VALUE}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Tbase/Deposit Amount: </div>
+                <div class="col"><b>{{selected.TBASE_DEPOSIT_AMOUNT}}</b></div>
+              </div>
+              <div class="row">
+                <div class="col label-1">Date: </div>
+                <div class="col"><b>{{selected.AMOUNT_PAID_DATE}}</b></div>
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col label-1">Cheque No: </div>
+                <div class="col"><b>{{selected.CHEQUENO}}</b></div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">Refund Amount Paid (if any): &nbsp;<b>{{selected.REFUND_AMOUNT_PAID}}</b></div>
+                <!-- <div class="col label-1"> </div> -->
+                <!-- <div class="col"></div> -->
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col"> Refund Amount Paid Date (if any):
+                  &nbsp;<b>{{selected.REFUND_AMOUNT_PAID_DATE}}</b></div>
+                <!-- <div class="col label-1"> -->
+                <!-- </div> -->
+                <!-- <div class="col"><b></b></div> -->
+              </div>
+
+              <div class="row">
+                <div class="col">Service Charge Amount: &nbsp;<b>{{selected.SERVICE_CHARGE_AMOUNT_PAID_DATE}}</b></div>
+                <!-- <div class="col label-1"> </div>
+                <div class="col"></div> -->
+                <!-- </div>
+              <div class="row"> -->
+                <div class="col">Service Charge Amount Paid Date:&nbsp;<b>{{selected.SERVICE_CHARGE_AMOUNT_PAID_DATE}}</b></div>
+                <!-- <div class="col label-1">
+                </div>
+                <div class="col"></div> -->
+              </div>
+              <div class="row">
+                <div class="col">Service Charge Due Date: &nbsp;<b>{{selected.SERVICE_CHARGE_DUE_DATE}}</b></div>
+                <!-- <div class="col label-1"> </div> -->
+                <!-- <div class="col"></div> -->
+              </div>
+              <div class="row">
+                <!-- <div class="col label-1" </div> -->
+                <div class="col">Remarks: &nbsp;<b>{{selected.REMARKS}}</b></div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row mr-2 ml-2">
+          <div class="col card" *ngIf="(viewSelector.value === 'OEM'
+            ||
+            viewSelector.value === 'All')">
+            <span class="my-card-title float-left">
+              OEM
+            </span>
+
+            <div class="row">
+              <div class="col label-1">OEM: </div>
+              <div class="col"><b>{{selected.VENDOR_NAME}}</b></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

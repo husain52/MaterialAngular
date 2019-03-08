@@ -1,0 +1,71 @@
+.pri {
+  background: #33b5e5;
+}
+
+.highlight {
+  color: red;
+  font-weight: bolder;
+}
+
+table {
+  background-color: white;
+}
+
+.my-card-title {
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.rowClass {
+  border: 0.5px solid lightblue;
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  color: black;
+}
+
+.ngx-datatable .datatable-body-cell,
+.ngx-datatable .datatable-header-cell {
+  border-bottom: 0.1px solid rgba(225, 225, 255, 1);
+  border-right: 0.1px solid rgba(225, 225, 255, 1);
+}
+
+
+
+
+mat-button-toggle-group {
+  font-weight: bold;
+  background-color: white;}
+
+  mat-button-toggle {
+    vertical-align: middle;
+  }
+
+  .mat-button-toggle-checked {
+    background-color: #33b5e5;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    color: white;
+  }  
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0 0px 0px 0px rgb(0, 0, 0), 0 0px 0px 0 rgb(0, 0, 0),
+                0 0px 0px 0 rgb(0, 0, 0);
+}  
+mat-accordion{
+  margin-left: -2px;
+}
+.mat-expansion-panel-header{
+  padding: 0px 24px 0px 0px;
+}
+
+.gradient{
+  background: linear-gradient(40deg,#45cafc,#303f9f)!important;
+  background: white;
+  color: snow;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  margin: -15px -15px 10px -15px;
+}

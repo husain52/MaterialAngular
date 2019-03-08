@@ -1,0 +1,124 @@
+
+ <ng-sidebar-container style="height: 100vh;" (onBackdropClicked)="_onBackdropClicked()">
+
+    <ng-sidebar mode="over" [dock]="false" [showBackdrop]="false" [animate]="true" [closeOnClickOutside]="true" [dockedSize]="'50px'"
+        [(opened)]="_opened" [keyClose]="_keyClose" [position]="_POSITIONS[_positionNum]" [autoCollapseHeight]="_autoCollapseHeight"
+        [autoCollapseWidth]="_autoCollapseWidth" [closeOnClickBackdrop]="_closeOnClickBackdrop" [trapFocus]="_trapFocus" [autoFocus]="_autoFocus"
+        [sidebarClass]="'demo-sidebar'" [ariaLabel]="'My sidebar'" (onOpenStart)="_onOpenStart()" (onOpened)="_onOpened()" (onCloseStart)="_onCloseStart()"
+        (onClosed)="_onClosed()" (onTransitionEnd)="_onTransitionEnd()">
+
+        <div style="background: rgba(208, 219, 219, 0.952);height: 100%;">
+
+          <mat-form-field>
+              <input matInput placeholder="Search here" (keyup)='updateFilter()' [(ngModel)]="value">
+          </mat-form-field>
+        <!-- <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Fruits
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Vegetables
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Animals
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Vegetables123456789
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+        </mat-accordion> -->
+      </div>
+
+
+    </ng-sidebar>
+
+    <div ng-sidebar-content>
+        <!-- <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark teal darken-3 scrolling-navbar ie-nav" [containerInside]="false"> -->
+                <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-light white darken-3 scrolling-navbar ie-nav" [containerInside]="false">
+            <mdb-navbar-brand>
+
+                <i class="fa fa-bars" style="color: rgb(65, 62, 62);margin-right: 15px;" (click)="_toggleOpened()" aria-hidden="true"></i>
+
+                <a style="font-weight: bold; color: rgb(59, 58, 58);margin-right: 15px;" class="logo navbar-brand"><strong>Navbar</strong></a>
+            </mdb-navbar-brand>
+            <links>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active waves-light" mdbWavesEffect>
+                        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link">Features</a>
+                    </li>
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link">Pricing</a>
+                    </li>
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link">Opinions</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </links>
+        </mdb-navbar>
+
+
+
+        <div style="display: flex;">
+          <div class="dock">
+            <div class="dockChild">
+                <ul class="navbar-nav nav-flex-icons">
+                        <li class="nav-item waves-light" mdbWavesEffect>
+                            <a class="nav-link"><i class="fa fa-cog"></i></a>
+                        </li>
+                        <li class="nav-item waves-light" mdbWavesEffect>
+                            <a class="nav-link"><i class="fa fa-crosshairs"></i></a>
+                        </li>
+                        <li class="nav-item waves-light" mdbWavesEffect>
+                            <a class="nav-link"><i class="fa fa-diamond"></i></a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-12" style="margin-top: 5rem;">
+         <router-outlet></router-outlet>
+      </div>
+
+
+
+        </div>
+
+
+    </div>
+  </ng-sidebar-container>
+
+
+
